@@ -51,7 +51,7 @@ fun list_leaf Zero = []
   | list_leaf (One x) = [x]
   | list_leaf (Two (x, y, _)) = [x, y]
 
-functor Mmtree (structure P : METRIC) :> MMTREE where type Pivot.t=P.t = struct
+functor Mmtree (P : METRIC) : MMTREE = struct
   structure Pivot : METRIC = P
   type 'a mmtree = (Pivot.t * 'a) mmnode
 
@@ -159,3 +159,5 @@ functor Mmtree (structure P : METRIC) :> MMTREE where type Pivot.t=P.t = struct
     end
 
 end
+
+structure Mm2dtree = Mmtree(Manhattan2D)
