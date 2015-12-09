@@ -99,7 +99,7 @@ functor Mmtree (P : METRIC) : MMTREE = struct
     | insert (p, x) (Ex ((pa, a), (pb, b), r, l1, l2, l3, l4)) =
     (* Semi-balancing *)
     let
-      val ls = (pa, a) :: (pa, b) :: List.concat (List.map list_leaf [l1, l2, l3, l4])
+      val ls = (pa, a) :: (pb, b) :: List.concat (List.map list_leaf [l1, l2, l3, l4])
     in
       if List.length ls > 8 then
         insert (p, x) (In ((pa, a), (pb, b), r, Lf l1, Lf l2, Lf l3, Lf l4))
